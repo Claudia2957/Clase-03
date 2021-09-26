@@ -6,6 +6,25 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
         <link href="style.css" rel="stylesheet" />
         <title>Ejercicio con Bootstrap &#127959;</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+        <script>
+        function setup() {
+                createCanvas(windowWidth, windowHeight).position(0, 0).style("z-index", -1).style("position", "fixed");
+                tabla();
+            }
+            function draw() {
+                colorMode(HSB, 360, 100, 100);
+                background(map(mouseX, 0, width, 360, 120), 50, 75);
+            }
+            function windowResized() {
+                resizeCanvas(windowWidth, windowHeight);
+            }
+            function tabla() {
+                favoritismo.forEach(function (e) {
+                    createElement('tr', '<th scope="row">' + e.lugar + '</th><td>' + e.nombre + '</td><td>' + e.motivo + '</td><td><div class="progress"><div class="progress-bar" role="progressbar" style="width: '+e.valor+'%;" aria-valuenow="'+e.valor+'" aria-valuemin="0" aria-valuemax="100">'+e.valor+'%</div></div></td>').parent("pongale");
+                });
+            }
+        </script>
     </head>
     <body>
         <header class="container">
